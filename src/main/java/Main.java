@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-
+        User testUser = new User("testid", "Mariano", "Guillaume", 20);
         int option;
 
         do {
