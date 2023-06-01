@@ -26,6 +26,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("elegiste el número 3");
+                    modifyUser();
                     break;
                 case 4:
                     System.out.println("elegiste el número 4");
@@ -50,5 +51,21 @@ public class Main {
 
     public static void getUsers() {
         DBManager.getUsers();
+    }
+    public static void modifyUser() {
+        System.out.println("Ingresa el id a modificar");
+        long id = scanner.nextLong();
+
+        System.out.println("Ingresa un nombre");
+        scanner.nextLine();
+        String newName = scanner.nextLine();
+
+        System.out.println("Ingresa un apellido");
+        String newLastName = scanner.nextLine();
+
+        System.out.println("Ingresa edad");
+        int age = scanner.nextInt();
+
+        DBManager.updateUser(id, newName, newLastName, age);
     }
 }
