@@ -1,5 +1,3 @@
-import java.util.function.Consumer;
-
 public class User {
     private final String id;
     public String name = "";
