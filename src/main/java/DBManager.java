@@ -33,7 +33,7 @@ public class DBManager {
 
     public static void getUsers() {
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from userInfo");
+            PreparedStatement statement = connection.prepareStatement("select * from userInfo order by id");
             ResultSet result = statement.executeQuery();
             while(result.next()) {
                 long id = result.getLong("id");
@@ -57,7 +57,13 @@ public class DBManager {
             statement.setInt(3, newAge);
             statement.setLong(4, id);
 
-            statement.executeUpdate();
+            int row = statement.executeUpdate();
+
+            if(row == 0) {
+                System.out.println("no se pudo modificar");
+            } else {
+                System.out.println("se modificó correctamente");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
