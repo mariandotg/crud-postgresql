@@ -52,6 +52,7 @@ public class Main {
     public static void getUsers() {
         DBManager.getUsers();
     }
+    
     public static void modifyUser() {
         System.out.println("Ingresa el id a modificar");
         long id = scanner.nextLong();
