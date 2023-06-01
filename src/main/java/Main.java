@@ -18,6 +18,7 @@ public class Main {
             switch (option) {
                 case 1:
                     System.out.println("elegiste el número 1");
+                    getUsers();
                     break;
                 case 2:
                     System.out.println("elegiste el número 2");
@@ -45,5 +46,9 @@ public class Main {
         int age = scanner.nextInt();
 
         DBManager.insertUser(name, lastName, age);
+    }
+
+    public static void getUsers() {
+        DBManager.getUsers();
     }
 }
