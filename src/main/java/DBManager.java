@@ -1,7 +1,6 @@
 import io.github.cdimascio.dotenv.Dotenv;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
+import java.sql.*;
 
 public class DBManager {
     private static final Dotenv dotenv = Dotenv.load();
@@ -28,6 +27,24 @@ public class DBManager {
 
             statement.execute();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getUsers() {
+        try {
+            PreparedStatement statement = connection.prepareStatement("select * from userInfo");
+            ResultSet result = statement.executeQuery();
+            while(result.next()) {
+                long id = result.getLong("id");
+                String name = result.getString("name");
+                String lastName = result.getString("lastName");
+                int age = result.getInt("age");
+
+                User user = new User(id, name, lastName, age);
+                System.out.println(user);
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
