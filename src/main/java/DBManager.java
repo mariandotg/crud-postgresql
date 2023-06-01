@@ -68,4 +68,21 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+
+    public static void deleteUser(long id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("delete from userInfo where id = ?");
+            statement.setLong(1, id);
+
+            int row = statement.executeUpdate();
+
+            if(row == 0) {
+                System.out.println("no se pudo eliminar");
+            } else {
+                System.out.println("se eliminó correctamente");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
