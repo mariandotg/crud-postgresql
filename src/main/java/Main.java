@@ -30,6 +30,7 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("elegiste el número 4");
+                    removeUser();
                     break;
             }
         } while (option != 5);
@@ -70,5 +71,14 @@ public class Main {
         int age = scanner.nextInt();
 
         DBManager.updateUser(id, newName, newLastName, age);
+    }
+
+    public static void removeUser() {
+        DBManager.getUsers();
+
+        System.out.println("Ingresa el id a eliminar");
+        long id = scanner.nextLong();
+
+        DBManager.deleteUser(id);
     }
 }
