@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        User testUser = new User("testid", "Mariano", "Guillaume", 20);
+        DBManager.initConnection();
+
         int option;
 
         do {
@@ -20,6 +21,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("elegiste el número 2");
+                    createUser();
                     break;
                 case 3:
                     System.out.println("elegiste el número 3");
@@ -29,7 +31,19 @@ public class Main {
                     break;
             }
         } while (option != 5);
+    }
 
-        DBManager.initConnection();
+    public static void createUser() {
+        System.out.println("Ingresa un nombre");
+        scanner.nextLine();
+        String name = scanner.nextLine();
+
+        System.out.println("Ingresa un apellido");
+        String lastName = scanner.nextLine();
+
+        System.out.println("Ingresa edad");
+        int age = scanner.nextInt();
+
+        DBManager.insertUser(name, lastName, age);
     }
 }
