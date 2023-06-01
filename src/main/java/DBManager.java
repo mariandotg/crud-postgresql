@@ -44,8 +44,8 @@ public class DBManager {
                 User user = new User(id, name, lastName, age);
                 System.out.println(user.toString());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
@@ -64,8 +64,8 @@ public class DBManager {
             } else {
                 System.out.println("se modificó correctamente");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
@@ -81,8 +81,16 @@ public class DBManager {
             } else {
                 System.out.println("se eliminó correctamente");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public static void closeConnection() {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }
