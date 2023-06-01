@@ -32,6 +32,9 @@ public class Main {
                     System.out.println("elegiste el número 4");
                     removeUser();
                     break;
+                case 5:
+                    DBManager.closeConnection();
+                    break;
             }
         } while (option != 5);
     }
