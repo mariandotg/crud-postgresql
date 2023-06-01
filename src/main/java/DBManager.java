@@ -42,8 +42,22 @@ public class DBManager {
                 int age = result.getInt("age");
 
                 User user = new User(id, name, lastName, age);
-                System.out.println(user);
+                System.out.println(user.toString());
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateUser(long id, String newName, String newLastName, int newAge) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("update userInfo set name = ?, lastName = ?, age = ? where id = ?");
+            statement.setString(1, newName);
+            statement.setString(2, newLastName);
+            statement.setInt(3, newAge);
+            statement.setLong(4, id);
+
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
