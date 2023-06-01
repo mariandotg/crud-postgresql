@@ -10,4 +10,8 @@ public class User {
         this.lastName = lastName;
         this.age = age;
     }
+
+    public String toString() {
+        return String.format("id: %s, nombre: %s, apellido: %s, edad: %s", id, name, lastName, age);
+    }
 }
